@@ -1,1 +1,828 @@
-<!DOCTYPE html><html><head><title>test</title></head><body>test</body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Mídia | Zukkin + ABRAS 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --zukkin-red: #CC0000;
+    --zukkin-red-dark: #990000;
+    --abras-blue: #0D2137;
+    --abras-blue-mid: #1B3A5C;
+    --abras-blue-light: #2E75B6;
+    --accent-gold: #D4A843;
+    --bg-dark: #0A0F1A;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2332;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border-subtle: rgba(255,255,255,0.06);
+    --gradient-red: linear-gradient(135deg, #CC0000 0%, #FF3333 100%);
+    --gradient-blue: linear-gradient(135deg, #0D2137 0%, #1B3A5C 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 15, 26, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .nav-brand .z { color: var(--zukkin-red); }
+  .nav-brand .x { color: var(--text-muted); margin: 0 0.3rem; font-weight: 400; }
+  .nav-brand .a { color: var(--abras-blue-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(204,0,0,0.08) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,117,182,0.06) 0%, transparent 70%);
+    animation: pulse 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: rgba(204,0,0,0.1);
+    border: 1px solid rgba(204,0,0,0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--zukkin-red);
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+
+  .hero h1 .line1 { color: var(--text-primary); }
+  .hero h1 .line2 {
+    background: linear-gradient(135deg, var(--zukkin-red) 0%, #FF4444 50%, var(--abras-blue-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 550px;
+    margin: 0 auto 2.5rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .badge strong { color: var(--text-primary); }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zukkin-red);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-red);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(204,0,0,0.15);
+    transform: translateY(-4px);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-icon.red { background: rgba(204,0,0,0.12); }
+  .card-icon.blue { background: rgba(46,117,182,0.12); }
+  .card-icon.gold { background: rgba(212,168,67,0.12); }
+
+  .card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .card .tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(204,0,0,0.1);
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--zukkin-red);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .card .tag.blue-tag {
+    background: rgba(46,117,182,0.1);
+    color: var(--abras-blue-light);
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--zukkin-red), var(--abras-blue-light), transparent);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 2.5rem 2rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--zukkin-red);
+    margin-left: -4px;
+    box-shadow: 0 0 0 4px rgba(204,0,0,0.15);
+  }
+
+  .tl-item:nth-child(even)::before {
+    background: var(--abras-blue-light);
+    box-shadow: 0 0 0 4px rgba(46,117,182,0.15);
+  }
+
+  .tl-month {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--zukkin-red);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-item:nth-child(even) .tl-month { color: var(--abras-blue-light); }
+
+  .tl-action {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-channel {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* PAUTA SECTION */
+  .pauta-box {
+    background: linear-gradient(135deg, rgba(204,0,0,0.05) 0%, rgba(46,117,182,0.05) 100%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pauta-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--zukkin-red), var(--abras-blue-light));
+  }
+
+  .pauta-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--accent-gold);
+  }
+
+  .pauta-subtitle {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .pauta-steps {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .pauta-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .pauta-step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(204,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--zukkin-red);
+  }
+
+  .pauta-step-text strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .pauta-step-text p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* KPI SECTION */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .kpi {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 1.8rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .kpi:hover {
+    border-color: rgba(204,0,0,0.2);
+    transform: translateY(-2px);
+  }
+
+  .kpi-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .kpi h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .kpi p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* CTA / FOOTER */
+  .cta-section {
+    text-align: center;
+    padding: 5rem 2rem 6rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-section .signature {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .cta-section .signature strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .cta-section .signature span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .divider hr {
+    border: none;
+    height: 1px;
+    background: var(--border-subtle);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0.6rem 1rem; }
+    .nav-links { display: none; }
+    section { padding: 3rem 1.2rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .pauta-box { padding: 2rem 1.5rem; }
+    .hero h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span class="z">ZUKKIN</span>
+    <span class="x">&times;</span>
+    <span class="a">ABRAS</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#canais">Canais</a></li>
+    <li><a href="#cronograma">Cronograma</a></li>
+    <li><a href="#pauta">Pauta</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Parceria Estrat&eacute;gica 2026</div>
+    <h1>
+      <span class="line1">Plano de M&iacute;dia</span><br>
+      <span class="line2">Zukkin + ABRAS</span>
+    </h1>
+    <p class="hero-sub">
+      Conte&uacute;do de valor sobre pricing e intelig&ecirc;ncia de pre&ccedil;os para posicionar ambas as marcas como refer&ecirc;ncia no varejo alimentar brasileiro.
+    </p>
+    <div class="hero-badges">
+      <div class="badge">&#128197; <strong>Smart Market</strong>&nbsp; 27-28 Abr</div>
+      <div class="badge">&#127942; <strong>ABRAS&rsquo;26</strong>&nbsp; 20-22 Set</div>
+      <div class="badge">&#128240; <strong>SuperHiper</strong>&nbsp; 30K profissionais</div>
+    </div>
+  </div>
+</div>
+
+<!-- CANAIS -->
+<section id="canais">
+  <div class="section-label">02 &mdash; Canais &amp; A&ccedil;&otilde;es</div>
+  <h2 class="section-title">M&iacute;dia Integrada em<br>M&uacute;ltiplos Canais</h2>
+  <p class="section-desc">
+    Um plano que combina m&iacute;dia impressa, digital e social para garantir frequ&ecirc;ncia, visibilidade e posicionamento durante todo o ano &mdash; maximizando o retorno do investimento da parceria.
+  </p>
+
+  <div class="cards-grid">
+
+    <div class="card">
+      <div class="card-icon red">&#128214;</div>
+      <h3>Revista SuperHiper</h3>
+      <p>Mat&eacute;ria com depoimentos e cases de sucesso de redes associadas &agrave; ABRAS que utilizam o Zukkin, mostrando resultados concretos em pricing, prote&ccedil;&atilde;o de margem e competitividade.</p>
+      <div class="tag">2 edi&ccedil;&otilde;es no ano</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon blue">&#127760;</div>
+      <h3>Site SuperHiper + ABRAS</h3>
+      <p>Banner rotativo no site com link para conte&uacute;do Zukkin (abril a novembro) + artigos mensais sobre estrat&eacute;gias de pricing, pre&ccedil;o de imagem e gest&atilde;o de margem.</p>
+      <div class="tag blue-tag">6 meses de exposi&ccedil;&atilde;o</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon gold">&#9993;</div>
+      <h3>Newsletter ABRAS</h3>
+      <p>Inclus&atilde;o de conte&uacute;do Zukkin em pelo menos 4 edi&ccedil;&otilde;es da newsletter, com artigos curtos e destaques com link para conte&uacute;do completo.</p>
+      <div class="tag">4 edi&ccedil;&otilde;es m&iacute;nimo</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon blue">&#128241;</div>
+      <h3>LinkedIn &amp; Instagram</h3>
+      <p>LinkedIn (81K): 2 posts/m&ecirc;s com Zukkin como parceiro em pricing. Instagram (26K): stories e posts visuais com dados, infogr&aacute;ficos e bastidores dos eventos.</p>
+      <div class="tag blue-tag">+107K alcance social</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon red">&#127909;</div>
+      <h3>YouTube &amp; Videocast</h3>
+      <p>Participa&ccedil;&atilde;o em videocast ou live SuperMeeting com tema de pricing. Canal ABRAS com 1,5M de views e 3,3M de impress&otilde;es.</p>
+      <div class="tag">1-2 participa&ccedil;&otilde;es</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon gold">&#129309;</div>
+      <h3>Contrapartida Zukkin</h3>
+      <p>Al&eacute;m do investimento de R$ 180K na parceria, a Zukkin vai produzir conte&uacute;dos em suas m&iacute;dias (LinkedIn, site, e-mail marketing) promovendo os eventos ABRAS e gerando atratividade e frequ&ecirc;ncia para o setor supermercadista.</p>
+      <div class="tag blue-tag">Parceria bilateral</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- CRONOGRAMA -->
+<section id="cronograma">
+  <div class="section-label">03 &mdash; Cronograma</div>
+  <h2 class="section-title">Calend&aacute;rio de<br>Publica&ccedil;&otilde;es 2026</h2>
+  <p class="section-desc">
+    A&ccedil;&otilde;es distribu&iacute;das ao longo do ano para manter frequ&ecirc;ncia cont&iacute;nua e maximizar o retorno nos dois momentos principais.
+  </p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-month">Mar&ccedil;o</div>
+      <div class="tl-action">Mat&eacute;ria com cases de pricing (pr&eacute;-Smart Market)</div>
+      <div class="tl-channel">Revista SuperHiper &bull; ABRAS + Zukkin</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Abril</div>
+      <div class="tl-action">Smart Market + Ativa&ccedil;&atilde;o do banner no site</div>
+      <div class="tl-channel">Evento presencial + Site ABRAS</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Maio</div>
+      <div class="tl-action">Artigo de pricing + Newsletter</div>
+      <div class="tl-channel">Site SuperHiper + Newsletter ABRAS</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Junho</div>
+      <div class="tl-action">Posts LinkedIn + Newsletter</div>
+      <div class="tl-channel">LinkedIn ABRAS + Newsletter</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Julho</div>
+      <div class="tl-action">Artigo de pricing + Videocast/Live</div>
+      <div class="tl-channel">Site SuperHiper + YouTube ABRAS</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Agosto</div>
+      <div class="tl-action">Mat&eacute;ria com cases de pricing (pr&eacute;-ABRAS&rsquo;26) + Newsletter</div>
+      <div class="tl-channel">Revista SuperHiper + Newsletter</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Setembro</div>
+      <div class="tl-action">ABRAS&rsquo;26 + Cobertura nas redes sociais</div>
+      <div class="tl-channel">Evento presencial + Redes Sociais</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Outubro</div>
+      <div class="tl-action">Banner ativo + Conte&uacute;do p&oacute;s-evento com cases</div>
+      <div class="tl-channel">Site ABRAS + LinkedIn</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-month">Novembro</div>
+      <div class="tl-action">Newsletter final + Balan&ccedil;o da parceria 2026</div>
+      <div class="tl-channel">Newsletter + LinkedIn</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- PAUTA -->
+<section id="pauta">
+  <div class="section-label">04 &mdash; Sugest&atilde;o de Pauta</div>
+  <h2 class="section-title">Mat&eacute;ria SuperHiper</h2>
+  <p class="section-desc">
+    Proposta de conte&uacute;do editorial que gera valor para o setor e posiciona Zukkin como refer&ecirc;ncia em pricing.
+  </p>
+
+  <div class="pauta-box">
+    <div class="pauta-title">Mat&eacute;ria com Cases de Sucesso</div>
+    <div class="pauta-subtitle">
+      &ldquo;Intelig&ecirc;ncia de Pre&ccedil;os: como redes supermercadistas est&atilde;o protegendo margem e ganhando competitividade com tecnologia&rdquo;
+    </div>
+
+    <div class="pauta-steps">
+      <div class="pauta-step">
+        <div class="pauta-step-num">1</div>
+        <div class="pauta-step-text">
+          <strong>Abertura</strong>
+          <p>O desafio da precifica&ccedil;&atilde;o no varejo alimentar &mdash; margens de 2%, alta competitividade e consumidor cada vez mais sens&iacute;vel a pre&ccedil;o.</p>
+        </div>
+      </div>
+
+      <div class="pauta-step">
+        <div class="pauta-step-num">2</div>
+        <div class="pauta-step-text">
+          <strong>Contexto</strong>
+          <p>A evolu&ccedil;&atilde;o da intelig&ecirc;ncia de pre&ccedil;os no Brasil e o papel do Zukkin desde 2020, com destaque para a IA aplicada &agrave; precifica&ccedil;&atilde;o.</p>
+        </div>
+      </div>
+
+      <div class="pauta-step">
+        <div class="pauta-step-num">3</div>
+        <div class="pauta-step-text">
+          <strong>Cases de Sucesso</strong>
+          <p>Depoimentos de 2 a 3 redes associadas &agrave; ABRAS que utilizam o Zukkin, com resultados concretos: ganho de margem, redu&ccedil;&atilde;o de tempo operacional, melhora na competitividade.</p>
+        </div>
+      </div>
+
+      <div class="pauta-step">
+        <div class="pauta-step-num">4</div>
+        <div class="pauta-step-text">
+          <strong>Vis&atilde;o de Futuro</strong>
+          <p>O que muda com a IA aplicada ao pricing &mdash; Zukkin Pricing IA e o impacto para o setor supermercadista.</p>
+        </div>
+      </div>
+
+      <div class="pauta-step">
+        <div class="pauta-step-num">5</div>
+        <div class="pauta-step-text">
+          <strong>Fechamento</strong>
+          <p>A import&acirc;ncia da parceria ABRAS-Zukkin para democratizar o acesso &agrave; intelig&ecirc;ncia de pre&ccedil;os entre as redes familiares e regionais (79% do setor).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- KPIs -->
+<section id="kpis">
+  <div class="section-label">05 &mdash; Acompanhamento</div>
+  <h2 class="section-title">Indicadores de<br>Performance</h2>
+  <p class="section-desc">
+    M&eacute;tricas para garantir que todas as entregas sejam cumpridas e que a parceria gere o resultado esperado.
+  </p>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-icon">&#128248;</div>
+      <h4>Comprova&ccedil;&atilde;o</h4>
+      <p>Prints, links e relat&oacute;rios de cada a&ccedil;&atilde;o realizada</p>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-icon">&#128200;</div>
+      <h4>M&eacute;tricas Digitais</h4>
+      <p>Impress&otilde;es, cliques e engajamento dos conte&uacute;dos nos canais ABRAS</p>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-icon">&#128421;</div>
+      <h4>Banner Ativo</h4>
+      <p>Confirma&ccedil;&atilde;o mensal com screenshot do banner no site</p>
+    </div>
+
+    <div class="kpi">
+      <div class="kpi-icon">&#128197;</div>
+      <h4>Reuni&atilde;o Trimestral</h4>
+      <p>Alinhamento para revisar o plano e ajustar a&ccedil;&otilde;es</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Vamos construir juntos</h2>
+  <p>
+    Este plano &eacute; uma sugest&atilde;o inicial para constru&ccedil;&atilde;o conjunta. Estamos abertos a ajustes e adequa&ccedil;&otilde;es conforme as possibilidades e o calend&aacute;rio editorial da ABRAS.
+  </p>
+  <div class="signature">
+    <strong>Ricardo Forte</strong>
+    <span>Diretor | Zukkin Brasil | Mar&ccedil;o de 2026</span>
+  </div>
+</div>
+
+</body>
+</html>
